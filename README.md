@@ -80,7 +80,7 @@ Some remarks on frozen inference graphs:
 | [faster_rcnn_inception_v2_smd_2](https://mega.nz/#!y2xQjSYB!6vXFc1jHlBFZp2RLcpCzPWNh9xNPDd1qjgrxtmqPHh4) |Dataset 2| 78.2 | 67 | [faster_rcnn_inception_v2_smd_2.config](https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/tensorflow_training_configurations/faster_rcnn_inception_v2_smd_2.config) |  [faster_rcnn_inception_v2_coco](http://download.tensorflow.org/models/object_detection/faster_rcnn_inception_v2_coco_2018_01_28.tar.gz)|
 
 
-##Models trained using Keras YOLOv2 implementation
+## Models trained using Keras YOLOv2 implementation
 
 Using this framework the following back-ends were used with YOLOv2 for the training:
 
