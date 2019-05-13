@@ -32,7 +32,7 @@ In the table below, the trained models in the SMD are listed including:
   GeForce GTX 1070 with 8GB memory) and should be treated more as relative timings in
   many cases. Also note that desktop GPU timing does not always reflect mobile
   run time. For example Mobilenet V2 is faster on mobile devices than Mobilenet
-  V1, but is slightly slower on desktop GPU.
+  V1, but is slightly slower on desktop GPU. The times were infered using [Tensorflow_object_detection_time Jupyter notebook](https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/NOTEBOOKS/Tensorflow_object_detection_time.ipynb).
 * mAP 0.5 IOU detector performance on subset of the test part of dataset trained on.
   Here, higher is better, and I only report bounding box mAP rounded to the
   nearest integer.
@@ -98,7 +98,7 @@ In the table below, the trained models in the SMD are listed including:
   aware that these timings depend highly on one's specific hardware
   configuration (these timings were performed using an Nvidia
   GeForce GTX 1070 with 8GB memory) and should be treated more as relative timings in
-  many cases.
+  many cases.The times were infered using [Keras_YOLO_time_of_inference Jupyter notebook](https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/NOTEBOOKS/Keras_YOLO_time_of_inference.ipynb).
 * mAP 0.5 IOU detector performance on subset of the test part of dataset trained on.
   Here, higher is better, and I only report bounding box mAP rounded to the
   nearest integer.
@@ -113,3 +113,23 @@ In the table below, the trained models in the SMD are listed including:
 | [tiny_yolo_v2_smd](https://mega.nz/#!CvY3RSqZ!w-bMmo1UnxVI1NkMHCvvbYYPqabgGtl0SI-JRH6ryWc) |Dataset 1| 29.2 | 43 | [config_tiny_yolo.json](https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/YOLOv2_training_configurations/config_tiny_yolo.json) |[tiny_yolo_backend.h5](https://onedrive.live.com/?authkey=%21AM2OzK4S4RpT%2DSU&cid=5FDEBAB7450CDD92&id=5FDEBAB7450CDD92%21107&parId=5FDEBAB7450CDD92%21121&o=OneUp)|
 | [squeezenet_yolo_v2_smd](https://mega.nz/#!ijRRXSbZ!mShj3Z5h918ihc1SoaBRmBw_ZIJSlaEczRZeVWz6MV8) |Dataset 1| 47.8 | 27 | [config_squeezenet.json](https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/YOLOv2_training_configurations/config_squeezenet.json) |[squeezenet_backend.h5](https://onedrive.live.com/?authkey=%21AM2OzK4S4RpT%2DSU&cid=5FDEBAB7450CDD92&id=5FDEBAB7450CDD92%21111&parId=5FDEBAB7450CDD92%21121&o=OneUp)|
 | [full_yolo_v2_smd_2](https://mega.nz/#!evIDhIwJ!VMXgiEGlEPGPGRbRPrKsc5JPG_BKQ4aS3yrCh4cQwfY) |Dataset 2| 41.9 | 33 | [config_full_yolo_2.json](https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/YOLOv2_training_configurations/config_full_yolo_2.json) |[full_yolo_backend.h5](https://mega.nz/#!3yYzkaDD!kSFJVXtaOaOsZHC_xoxl8ZaYRkES5xx0-3iW6RyBlzs)|
+
+## Example inferred images
+
+Here are some detection example of the trained models for the dataset 1. The generation of the inferred images for Keras YOLO v2 implementations was performed using [Keras_YOLO_prediction_and_save_video_and_images Jupyter notebook](https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/NOTEBOOKS/Keras_YOLO_prediction_and_save_video_and_images.ipynb). For Tensorflow the [Jupyter Notebook provided in the tutorial](https://github.com/tensorflow/models/blob/master/research/object_detection/object_detection_tutorial.ipynb) was used.
+
+### Example results for faster_rcnn_inception_v2_smd trained on dataset1
+
+![MVI_1469_VIS_frame470](https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/example_inferred_images/faster_rcnn_inception_v2_dataset1/MVI_1469_VIS_frame470.jpg)
+
+![MVI_1520_NIR_frame490](https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/example_inferred_images/faster_rcnn_inception_v2_dataset1/MVI_1520_NIR_frame490.jpg)
+
+![MVI_1578_VIS_frame490](https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/example_inferred_images/faster_rcnn_inception_v2_dataset1/MVI_1578_VIS_frame490.jpg)
+
+### Example results for ssd_resnet_50_fpn_smd trained on dataset1
+
+![MVI_1468_NIR_frame245](https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/example_inferred_images/ssd_resnet_50_fpn_dataset1/MVI_1468_NIR_frame245.jpg)
+
+![MVI_1474_VIS_frame425](https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/example_inferred_images/ssd_resnet_50_fpn_dataset1/MVI_1474_VIS_frame425.jpg)
+
+![MVI_1486_VIS_frame620](https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/example_inferred_images/ssd_resnet_50_fpn_dataset1/MVI_1486_VIS_frame620.jpg)
