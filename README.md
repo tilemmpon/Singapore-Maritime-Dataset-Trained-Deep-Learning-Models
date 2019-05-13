@@ -133,3 +133,19 @@ Here are some detection example of the trained models for the dataset 1. The gen
 ![MVI_1474_VIS_frame425](https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/example_inferred_images/ssd_resnet_50_fpn_dataset1/MVI_1474_VIS_frame425.jpg)
 
 ![MVI_1486_VIS_frame620](https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/example_inferred_images/ssd_resnet_50_fpn_dataset1/MVI_1486_VIS_frame620.jpg)
+
+## Citing
+
+If the Singapore Maritime Dataset is used please cite it as:
+D. K. Prasad, D. Rajan, L. Rachmawati, E. Rajabaly, and C. Quek, 
+"Video Processing from Electro-optical Sensors for Object Detection and 
+Tracking in Maritime Environment: A Survey," IEEE Transactions on Intelligent 
+Transportation Systems (IEEE), 2017. 
+
+If models/code/figures/results from this repo are used please add a reference to the repository.
+
+## Contribution
+
+To report an issue use the GitHub issue tracker. Please provide as much information as you can.
+
+Contributions (like new trained models etc.) are always welcome. Open an issue to contact me. The preferred method of contribution is through a github pull request.
