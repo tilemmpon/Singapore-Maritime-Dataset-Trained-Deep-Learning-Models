@@ -1,0 +1,36 @@
+{
+    "model" : {
+        "backend":              "Full Yolo",
+        "input_size":           416,
+        "anchors":              [0.30,0.35, 0.67,0.71, 0.96,1.74, 1.53,0.69, 3.64,2.24],
+        "max_box_per_image":    10,        
+        "labels":               ["Ferry","Buoy","Vessel/ship","Speed boat","Boat","Kayak","Sail boat","Flying bird/plane","Other"]
+    },
+
+    "train": {
+        "train_image_folder":   "/home/tbontz2s/git/tensorflow/workspace/training_demo/images/train/",
+        "train_annot_folder":   "/home/tbontz2s/git/tensorflow/workspace/training_demo/images/train_annotations/",     
+          
+        "train_times":          8,
+        "pretrained_weights":   "",
+        "batch_size":           16,
+        "learning_rate":        1e-4,
+        "nb_epochs":            100,
+        "warmup_epochs":        3,
+
+        "object_scale":         5.0 ,
+        "no_object_scale":      1.0,
+        "coord_scale":          1.0,
+        "class_scale":          1.0,
+
+        "saved_weights_name":   "full_yolo_singapore_dataset.h5",
+        "debug":                false
+    },
+
+    "valid": {
+        "valid_image_folder":   "/home/tbontz2s/git/tensorflow/workspace/training_demo/images/test/",
+        "valid_annot_folder":   "/home/tbontz2s/git/tensorflow/workspace/training_demo/images/test_annotations/",
+
+        "valid_times":          1
+    }
+}
