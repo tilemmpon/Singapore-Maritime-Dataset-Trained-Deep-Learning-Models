@@ -62,7 +62,7 @@ Some remarks on frozen inference graphs:
   release version of Tensorflow and I do not guarantee that these will work
   with other versions.
 
-## Trained models list
+### Trained models list
 
 | Model name  | Dataset trained| Speed (ms) | SDM mAP 0.5 IOU | training configuration |pre-trained model used|
 | ------------ | :--------------: | :--------------: | :--------------: | :-------------: | :-------------: |
@@ -105,6 +105,7 @@ In the table below, the trained models in the SMD are listed including:
 * Name and link of the configuration file used for the training,
 * Name and link of the back-end model used for feature extraction.
 
+### Trained models list
 
 | Model name  | Dataset trained| Speed (ms) | SDM mAP 0.5 IOU | training configuration |back-end used|
 | ------------ | :--------------: | :--------------: | :--------------: | :-------------: | :-------------: |
