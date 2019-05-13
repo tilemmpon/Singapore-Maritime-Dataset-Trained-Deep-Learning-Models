@@ -64,7 +64,7 @@ Some remarks on frozen inference graphs:
 
 ### Trained models list
 
-| Model name  | Dataset trained| Speed (ms) | SDM mAP 0.5 IOU | training configuration |pre-trained model used|
+| Model name  | Dataset trained| Speed (ms) | mAP @ 0.5 IOU | training configuration |pre-trained model used|
 | ------------ | :--------------: | :--------------: | :--------------: | :-------------: | :-------------: |
 | [ssd_mobilenet_v2_smd](https://mega.nz/#!ijhU1IzQ!w4InM1iJsUtUKXXJYcB7aAM8K1fDVjuXwgLD_cSHhdM) |Dataset 1| 28.6 | 65 | [ssd_inception_v2_smd.config](https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/tensorflow_training_configurations/ssd_inception_v2_smd.config) |[ssd_inception_v2_coco](http://download.tensorflow.org/models/object_detection/ssd_inception_v2_coco_2018_01_28.tar.gz)|
 | [ssd_inception_v2_smd](https://mega.nz/#!W2hEjKQR!R7gVeAa9Vq5yVYLaWdT87df02R9pSUNjVgb9PWayyQQ) |Dataset 1| 23.9 | 59 | [ssd_mobilenet_v2_smd.config](https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/tensorflow_training_configurations/ssd_mobilenet_v2_smd.config) | [ssd_mobilenet_v2_coco](http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v2_coco_2018_03_29.tar.gz)|
@@ -107,7 +107,7 @@ In the table below, the trained models in the SMD are listed including:
 
 ### Trained models list
 
-| Model name  | Dataset trained| Speed (ms) | SDM mAP 0.5 IOU | training configuration |back-end used|
+| Model name  | Dataset trained| Speed (ms) | mAP @ 0.5 IOU | training configuration |back-end used|
 | ------------ | :--------------: | :--------------: | :--------------: | :-------------: | :-------------: |
 | [full_yolo_v2_smd](https://mega.nz/#!e2QBHILa!OZ-_fykXbaBmza26aJCqNwxoXEETkY_dN86pLr5bWyg) |Dataset 1| 40.6 | 55 | [config_full_yolo.json](https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/YOLOv2_training_configurations/config_full_yolo.json) |[full_yolo_backend.h5](https://mega.nz/#!3yYzkaDD!kSFJVXtaOaOsZHC_xoxl8ZaYRkES5xx0-3iW6RyBlzs)|
 | [tiny_yolo_v2_smd](https://mega.nz/#!CvY3RSqZ!w-bMmo1UnxVI1NkMHCvvbYYPqabgGtl0SI-JRH6ryWc) |Dataset 1| 29.2 | 43 | [config_tiny_yolo.json](https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/YOLOv2_training_configurations/config_tiny_yolo.json) |[tiny_yolo_backend.h5](https://onedrive.live.com/?authkey=%21AM2OzK4S4RpT%2DSU&cid=5FDEBAB7450CDD92&id=5FDEBAB7450CDD92%21107&parId=5FDEBAB7450CDD92%21121&o=OneUp)|
