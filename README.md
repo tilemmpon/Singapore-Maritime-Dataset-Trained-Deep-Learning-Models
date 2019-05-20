@@ -142,7 +142,9 @@ D. K. Prasad, D. Rajan, L. Rachmawati, E. Rajabaly, and C. Quek,
 Tracking in Maritime Environment: A Survey," IEEE Transactions on Intelligent 
 Transportation Systems (IEEE), 2017. 
 
-If models/code/figures/results from this repo are used please add a reference to the repository.
+If models/code/figures/results from this repo are used please cite this repository as:
+
+Tilemachos Bontzorlos, "Singapore Maritime Dataset trained Deep Learning models", GitHub repository, Feb. 2019. https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models.
 
 ## Contribution
 
