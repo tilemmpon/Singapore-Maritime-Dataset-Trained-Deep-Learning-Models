@@ -16,7 +16,7 @@ Two separate splittings of the Singapore Maritime Dataset were used for training
 
 More more information about how the datasets used are generated please refer to the respective Jupyter notebooks linked. All selected models from both architectures were  trained on Dataset 1. The best performing models were tested also in Dataset 2 to check their performance on a more challenging splitting of the SMD.
 
-##Models trained using Tensorflow object detection API
+## Models trained using Tensorflow object detection API
 
 Several models trained on COCO dataset were selected and fine-tuned. The results can be seen below. Some information (partly adapted) from the [original repository](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md) is:
 

@@ -1,0 +1,260 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Unknown </title></head><body>
+<h1 id="singapore-maritime-dataset-trained-deep-learning-models">Singapore-Maritime-Dataset-Trained-Deep-Learning-Models</h1>
+<p>This repository contains the training configurations for several Deep Learning models trained on the <em>Singapore Maritime Dataset</em> (SMD) and links to the trained - ready to use - models. This can be considered as a model zoo for the Singapore Maritime Dataset. </p>
+<h2 id="software-frameworks-used-for-training">Software frameworks used for training</h2>
+<p>The models were selelcted and trained using two separate software frameworks:</p>
+<ul>
+<li><a href="https://github.com/tensorflow/models/tree/master/research/object_detection">Tensorflow object detection API</a></li>
+<li><a href="https://github.com/experiencor/keras-yolo2">Keras YOLOv2 implementation</a></li>
+</ul>
+<h2 id="datasets-used-for-training">Datasets used for training</h2>
+<p>Two separate splittings of the Singapore Maritime Dataset were used for training:</p>
+<ul>
+<li>The first split (Dataset 1) was created using <a href="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Frames-Ground-Truth-Generation-and-Statistics/blob/master/Singapore_dataset_frames_generation_and_histograms.ipynb">this code</a>. The code extracts every firth frame of each video of the SMD. Then the first 70% was used for training and the rest 30% for testing.</li>
+<li>The second split (Dataset 2) was created using <a href="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Frames-Ground-Truth-Generation-and-Statistics/blob/master/Singapore_dataset_frames_generation_2nd_dataset.ipynb">this code</a>. In this case also every firth frame of each video of the SMD is extracted. However, the frames of 4 selected videos are added completely in the test part  while for the rest of the videos - as before - the first 70% of the frames is added in the training part and the rest 30% in the testing.</li>
+</ul>
+<p>More more information about how the datasets used are generated please refer to the respective Jupyter notebooks linked. All selected models from both architectures were  trained on Dataset 1. The best performing models were tested also in Dataset 2 to check their performance on a more challenging splitting of the SMD.</p>
+<h2 id="models-trained-using-tensorflow-object-detection-api">Models trained using Tensorflow object detection API</h2>
+<p>Several models trained on COCO dataset were selected and fine-tuned. The results can be seen below. Some information (partly adapted) from the <a href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md">original repository</a> is:</p>
+<p>In the table below, the trained models in the SMD are listed including:</p>
+<ul>
+<li>a model name,</li>
+<li>a download link to a tar.gz file containing the trained model,</li>
+<li>the dataset this model was trained on,</li>
+<li>model speed --- I report running time in ms using the image size according to each model's configuration (including all
+  pre and post-processing), but please be
+  aware that these timings depend highly on one's specific hardware
+  configuration (these timings were performed using an Nvidia
+  GeForce GTX 1070 with 8GB memory) and should be treated more as relative timings in
+  many cases. Also note that desktop GPU timing does not always reflect mobile
+  run time. For example Mobilenet V2 is faster on mobile devices than Mobilenet
+  V1, but is slightly slower on desktop GPU. The times were infered using <a href="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/NOTEBOOKS/Tensorflow_object_detection_time.ipynb">Tensorflow_object_detection_time Jupyter notebook</a>.</li>
+<li>mAP 0.5 IOU detector performance on subset of the test part of dataset trained on.
+  Here, higher is better, and I only report bounding box mAP rounded to the
+  nearest integer.</li>
+<li>Name and link of the configuration file used for the training,</li>
+<li>Name and link of the pre-trained model on COCO dataset used for fine-tuning</li>
+</ul>
+<p>You can un-tar each tar.gz file via, e.g.,:</p>
+<p><code>tar -xzvf ssd_mobilenet_v1_coco.tar.gz</code></p>
+<p>Inside the un-tar'ed directory, you will find:</p>
+<ul>
+<li>a graph proto (<code>graph.pbtxt</code>)</li>
+<li>a checkpoint
+  (<code>model.ckpt.data-00000-of-00001</code>, <code>model.ckpt.index</code>, <code>model.ckpt.meta</code>)</li>
+<li>a frozen graph proto with weights baked into the graph as constants
+  (<code>frozen_inference_graph.pb</code>) to be used for out of the box inference
+    (try this out in the Jupyter notebook!)</li>
+<li>a config file (<code>pipeline.config</code>) which was used to generate the graph.</li>
+</ul>
+<p>Some remarks on frozen inference graphs:</p>
+<ul>
+<li>These frozen inference graphs were generated using the
+  <a href="https://github.com/tensorflow/tensorflow/tree/v1.9.0">v1.9.0</a>
+  release version of Tensorflow and I do not guarantee that these will work
+  with other versions.</li>
+</ul>
+<h3 id="trained-models-list">Trained models list</h3>
+<table>
+<thead>
+<tr>
+<th>Model name</th>
+<th>Dataset trained</th>
+<th>Speed (ms)</th>
+<th>mAP @ 0.5 IOU</th>
+<th>training configuration</th>
+<th>pre-trained model used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://mega.nz/#!ijhU1IzQ!w4InM1iJsUtUKXXJYcB7aAM8K1fDVjuXwgLD_cSHhdM">ssd_mobilenet_v2_smd</a></td>
+<td>Dataset 1</td>
+<td>28.6</td>
+<td>65</td>
+<td><a href="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/tensorflow_training_configurations/ssd_inception_v2_smd.config">ssd_inception_v2_smd.config</a></td>
+<td><a href="http://download.tensorflow.org/models/object_detection/ssd_inception_v2_coco_2018_01_28.tar.gz">ssd_inception_v2_coco</a></td>
+</tr>
+<tr>
+<td><a href="https://mega.nz/#!W2hEjKQR!R7gVeAa9Vq5yVYLaWdT87df02R9pSUNjVgb9PWayyQQ">ssd_inception_v2_smd</a></td>
+<td>Dataset 1</td>
+<td>23.9</td>
+<td>59</td>
+<td><a href="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/tensorflow_training_configurations/ssd_mobilenet_v2_smd.config">ssd_mobilenet_v2_smd.config</a></td>
+<td><a href="http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v2_coco_2018_03_29.tar.gz">ssd_mobilenet_v2_coco</a></td>
+</tr>
+<tr>
+<td><a href="https://mega.nz/#!zjhEAIoJ!_CVzuP0GJ2FMuP4mlO7Fu5WLT0rnDwahNxD87FBGpIE">ssd_mobilenet_v1_fpn_smd</a></td>
+<td>Dataset 1</td>
+<td>52</td>
+<td>70</td>
+<td><a href="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/tensorflow_training_configurations/ssd_mobilenet_v1_fpn_shared_box_predictor_640x640_smd.config">ssd_mobilenet_v1_fpn_smd.config</a></td>
+<td><a href="http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_fpn_shared_box_predictor_640x640_coco14_sync_2018_07_03.tar.gz">ssd_mobilenet_v1_fpn_coco </a></td>
+</tr>
+<tr>
+<td><a href="https://mega.nz/#!Lq4ygQgB!HNiwxfGyrntAeIHrGGu1kOffxWnwY5LjgjThddbB1-E">ssd_resnet_50_fpn_smd</a></td>
+<td>Dataset 1</td>
+<td>70.8</td>
+<td>71</td>
+<td><a href="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/tensorflow_training_configurations/ssd_resnet50_v1_fpn_shared_box_predictor_640x640_smd.config">ssd_resnet_50_fpn_smd.config</a></td>
+<td><a href="http://download.tensorflow.org/models/object_detection/ssd_resnet50_v1_fpn_shared_box_predictor_640x640_coco14_sync_2018_07_03.tar.gz">ssd_resnet_50_fpn_coco </a></td>
+</tr>
+<tr>
+<td><a href="https://mega.nz/#!mmoACCwL!vV6ocwCvRiSGOnmy6aqA4_HEgolLvsG2zC75VERQLzA">faster_rcnn_resnet50_smd</a></td>
+<td>Dataset 1</td>
+<td>173.7</td>
+<td>74</td>
+<td><a href="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/tensorflow_training_configurations/faster_rcnn_resnet50_smd.config">faster_rcnn_resnet50_smd.config</a></td>
+<td><a href="http://download.tensorflow.org/models/object_detection/faster_rcnn_resnet50_coco_2018_01_28.tar.gz">faster_rcnn_resnet50_coco</a></td>
+</tr>
+<tr>
+<td><a href="https://mega.nz/#!OvpQhQIS!At-LiNYDZi50K-3L31zGtzQEEwc6b5V9P4jw2JsZfr8">faster_rcnn_resnet101_smd</a></td>
+<td>Dataset 1</td>
+<td>203.6</td>
+<td>64</td>
+<td><a href="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/tensorflow_training_configurations/faster_rcnn_resnet101_smd.config">faster_rcnn_resnet101_smd.config</a></td>
+<td><a href="http://download.tensorflow.org/models/object_detection/faster_rcnn_resnet101_coco_2018_01_28.tar.gz">faster_rcnn_resnet101_coco</a></td>
+</tr>
+<tr>
+<td><a href="https://mega.nz/#!euwQSCpT!p6nzkhW73bV7QG7wT15MoljspW1XM3pUZ9djwcgzQkk">faster_rcnn_inception_v2_smd</a></td>
+<td>Dataset 1</td>
+<td>76.5</td>
+<td>76</td>
+<td><a href="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/tensorflow_training_configurations/faster_rcnn_inception_v2_smd.config">faster_rcnn_inception_v2_smd.config</a></td>
+<td><a href="http://download.tensorflow.org/models/object_detection/faster_rcnn_inception_v2_coco_2018_01_28.tar.gz">faster_rcnn_inception_v2_coco</a></td>
+</tr>
+<tr>
+<td><a href="https://mega.nz/#!K6hS1CxI!nPaJF4E_ZljgL63e6bA_0qWqeUuK-7TDvX4I2MhB4ho">faster_rcnn_inception_resnet_v2_atrous_smd</a></td>
+<td>Dataset 1</td>
+<td>745.5</td>
+<td>54</td>
+<td><a href="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/tensorflow_training_configurations/faster_rcnn_inception_resnet_v2_atrous_smd.config">faster_rcnn_inception_resnet_v2_atrous_smd.config</a></td>
+<td><a href="http://download.tensorflow.org/models/object_detection/faster_rcnn_inception_resnet_v2_atrous_coco_2018_01_28.tar.gz">faster_rcnn_inception_resnet_v2_atrous_coco</a></td>
+</tr>
+<tr>
+<td><a href="https://mega.nz/#!3zhClCQK!BXwCpuyq6VAb4QAYQc286wkwk4Wm_3kmjT6hBVYbDMs">ssd_mobilenet_v1_fpn_smd_2</a></td>
+<td>Dataset 2</td>
+<td>52.2</td>
+<td>61</td>
+<td><a href="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/tensorflow_training_configurations/ssd_mobilenet_v1_fpn_shared_box_predictor_640x640_smd_2.config">ssd_mobilenet_v1_fpn_smd_2.config</a></td>
+<td><a href="http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_fpn_shared_box_predictor_640x640_coco14_sync_2018_07_03.tar.gz">ssd_mobilenet_v1_fpn_coco </a></td>
+</tr>
+<tr>
+<td><a href="https://mega.nz/#!Lq4ygQgB!HNiwxfGyrntAeIHrGGu1kOffxWnwY5LjgjThddbB1-E">ssd_resnet_50_fpn_smd_2</a></td>
+<td>Dataset 2</td>
+<td>71.2</td>
+<td>62</td>
+<td><a href="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/tensorflow_training_configurations/ssd_resnet50_v1_fpn_shared_box_predictor_640x640_smd_2.config">ssd_resnet_50_fpn_smd_2.config</a></td>
+<td><a href="http://download.tensorflow.org/models/object_detection/ssd_resnet50_v1_fpn_shared_box_predictor_640x640_coco14_sync_2018_07_03.tar.gz">ssd_resnet_50_fpn_coco </a></td>
+</tr>
+<tr>
+<td><a href="https://mega.nz/#!TvhElY7K!vfMqbMY9e5YHSpMRrw7mdXd5iXa-YCdtQU0ae-EtD7E">faster_rcnn_resnet50_smd_2</a></td>
+<td>Dataset 2</td>
+<td>176.1</td>
+<td>69</td>
+<td><a href="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/tensorflow_training_configurations/faster_rcnn_resnet50_smd_2.config">faster_rcnn_resnet50_smd_2.config</a></td>
+<td><a href="http://download.tensorflow.org/models/object_detection/faster_rcnn_resnet50_coco_2018_01_28.tar.gz">faster_rcnn_resnet50_coco</a></td>
+</tr>
+<tr>
+<td><a href="https://mega.nz/#!y2xQjSYB!6vXFc1jHlBFZp2RLcpCzPWNh9xNPDd1qjgrxtmqPHh4">faster_rcnn_inception_v2_smd_2</a></td>
+<td>Dataset 2</td>
+<td>78.2</td>
+<td>67</td>
+<td><a href="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/tensorflow_training_configurations/faster_rcnn_inception_v2_smd_2.config">faster_rcnn_inception_v2_smd_2.config</a></td>
+<td><a href="http://download.tensorflow.org/models/object_detection/faster_rcnn_inception_v2_coco_2018_01_28.tar.gz">faster_rcnn_inception_v2_coco</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="models-trained-using-keras-yolov2-implementation">Models trained using Keras YOLOv2 implementation</h2>
+<p>Using this framework the following back-ends were used with YOLOv2 for the training:</p>
+<ul>
+<li>Darknet-19 (Full YOLOv2)</li>
+<li>Tiny Darknet (Tiny YOLOv2)</li>
+<li>SqueezeNet (SqueezeNet YOLOv2)</li>
+</ul>
+<p>In the table below, the trained models in the SMD are listed including:</p>
+<ul>
+<li>a model name,</li>
+<li>a download link to a .h5 file containing the trained model,</li>
+<li>the dataset this model was trained on,</li>
+<li>model speed --- I report running time in ms using the image size according to each model's configuration (including all
+  pre and post-processing), but please be
+  aware that these timings depend highly on one's specific hardware
+  configuration (these timings were performed using an Nvidia
+  GeForce GTX 1070 with 8GB memory) and should be treated more as relative timings in
+  many cases.The times were infered using <a href="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/NOTEBOOKS/Keras_YOLO_time_of_inference.ipynb">Keras_YOLO_time_of_inference Jupyter notebook</a>.</li>
+<li>mAP 0.5 IOU detector performance on subset of the test part of dataset trained on.
+  Here, higher is better, and I only report bounding box mAP rounded to the
+  nearest integer.</li>
+<li>Name and link of the configuration file used for the training,</li>
+<li>Name and link of the back-end model used for feature extraction.</li>
+</ul>
+<h3 id="trained-models-list_1">Trained models list</h3>
+<table>
+<thead>
+<tr>
+<th>Model name</th>
+<th>Dataset trained</th>
+<th>Speed (ms)</th>
+<th>mAP @ 0.5 IOU</th>
+<th>training configuration</th>
+<th>back-end used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://mega.nz/#!e2QBHILa!OZ-_fykXbaBmza26aJCqNwxoXEETkY_dN86pLr5bWyg">full_yolo_v2_smd</a></td>
+<td>Dataset 1</td>
+<td>40.6</td>
+<td>55</td>
+<td><a href="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/YOLOv2_training_configurations/config_full_yolo.json">config_full_yolo.json</a></td>
+<td><a href="https://mega.nz/#!3yYzkaDD!kSFJVXtaOaOsZHC_xoxl8ZaYRkES5xx0-3iW6RyBlzs">full_yolo_backend.h5</a></td>
+</tr>
+<tr>
+<td><a href="https://mega.nz/#!CvY3RSqZ!w-bMmo1UnxVI1NkMHCvvbYYPqabgGtl0SI-JRH6ryWc">tiny_yolo_v2_smd</a></td>
+<td>Dataset 1</td>
+<td>29.2</td>
+<td>43</td>
+<td><a href="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/YOLOv2_training_configurations/config_tiny_yolo.json">config_tiny_yolo.json</a></td>
+<td><a href="https://onedrive.live.com/?authkey=%21AM2OzK4S4RpT%2DSU&amp;cid=5FDEBAB7450CDD92&amp;id=5FDEBAB7450CDD92%21107&amp;parId=5FDEBAB7450CDD92%21121&amp;o=OneUp">tiny_yolo_backend.h5</a></td>
+</tr>
+<tr>
+<td><a href="https://mega.nz/#!ijRRXSbZ!mShj3Z5h918ihc1SoaBRmBw_ZIJSlaEczRZeVWz6MV8">squeezenet_yolo_v2_smd</a></td>
+<td>Dataset 1</td>
+<td>47.8</td>
+<td>27</td>
+<td><a href="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/YOLOv2_training_configurations/config_squeezenet.json">config_squeezenet.json</a></td>
+<td><a href="https://onedrive.live.com/?authkey=%21AM2OzK4S4RpT%2DSU&amp;cid=5FDEBAB7450CDD92&amp;id=5FDEBAB7450CDD92%21111&amp;parId=5FDEBAB7450CDD92%21121&amp;o=OneUp">squeezenet_backend.h5</a></td>
+</tr>
+<tr>
+<td><a href="https://mega.nz/#!evIDhIwJ!VMXgiEGlEPGPGRbRPrKsc5JPG_BKQ4aS3yrCh4cQwfY">full_yolo_v2_smd_2</a></td>
+<td>Dataset 2</td>
+<td>41.9</td>
+<td>33</td>
+<td><a href="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/YOLOv2_training_configurations/config_full_yolo_2.json">config_full_yolo_2.json</a></td>
+<td><a href="https://mega.nz/#!3yYzkaDD!kSFJVXtaOaOsZHC_xoxl8ZaYRkES5xx0-3iW6RyBlzs">full_yolo_backend.h5</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="example-inferred-images">Example inferred images</h2>
+<p>Here are some detection example of the trained models for the dataset 1. The generation of the inferred images for Keras YOLO v2 implementations was performed using <a href="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/NOTEBOOKS/Keras_YOLO_prediction_and_save_video_and_images.ipynb">Keras_YOLO_prediction_and_save_video_and_images Jupyter notebook</a>. For Tensorflow the <a href="https://github.com/tensorflow/models/blob/master/research/object_detection/object_detection_tutorial.ipynb">Jupyter Notebook provided in the tutorial</a> was used.</p>
+<h3 id="example-results-for-faster_rcnn_inception_v2_smd-trained-on-dataset1">Example results for faster_rcnn_inception_v2_smd trained on dataset1</h3>
+<p><img alt="MVI_1469_VIS_frame470" src="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/example_inferred_images/faster_rcnn_inception_v2_dataset1/MVI_1469_VIS_frame470.jpg" /></p>
+<p><img alt="MVI_1520_NIR_frame490" src="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/example_inferred_images/faster_rcnn_inception_v2_dataset1/MVI_1520_NIR_frame490.jpg" /></p>
+<p><img alt="MVI_1578_VIS_frame490" src="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/example_inferred_images/faster_rcnn_inception_v2_dataset1/MVI_1578_VIS_frame490.jpg" /></p>
+<h3 id="example-results-for-ssd_resnet_50_fpn_smd-trained-on-dataset1">Example results for ssd_resnet_50_fpn_smd trained on dataset1</h3>
+<p><img alt="MVI_1468_NIR_frame245" src="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/example_inferred_images/ssd_resnet_50_fpn_dataset1/MVI_1468_NIR_frame245.jpg" /></p>
+<p><img alt="MVI_1474_VIS_frame425" src="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/example_inferred_images/ssd_resnet_50_fpn_dataset1/MVI_1474_VIS_frame425.jpg" /></p>
+<p><img alt="MVI_1486_VIS_frame620" src="https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models/blob/master/example_inferred_images/ssd_resnet_50_fpn_dataset1/MVI_1486_VIS_frame620.jpg" /></p>
+<h2 id="citing">Citing</h2>
+<p>If the Singapore Maritime Dataset is used please cite it as:
+D. K. Prasad, D. Rajan, L. Rachmawati, E. Rajabaly, and C. Quek, 
+"Video Processing from Electro-optical Sensors for Object Detection and 
+Tracking in Maritime Environment: A Survey," IEEE Transactions on Intelligent 
+Transportation Systems (IEEE), 2017. </p>
+<p>If models/code/figures/results from this repo are used please cite this repository as:</p>
+<p>Tilemachos Bontzorlos, "Singapore Maritime Dataset trained Deep Learning models", GitHub repository, Feb. 2019. https://github.com/tilemmpon/Singapore-Maritime-Dataset-Trained-Deep-Learning-Models.</p>
+<h2 id="contribution">Contribution</h2>
+<p>To report an issue use the GitHub issue tracker. Please provide as much information as you can.</p>
+<p>Contributions (like new trained models etc.) are always welcome. Open an issue to contact me. The preferred method of contribution is through a github pull request.</p>
+</body></html>
