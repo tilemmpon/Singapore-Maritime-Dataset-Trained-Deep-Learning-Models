@@ -1,0 +1,49 @@
+item {
+  id: 1
+  name: 'Ferry'
+}
+
+item {
+  id: 2
+  name: 'Buoy'
+}
+
+item {
+  id: 3
+  name: 'Vessel/ship'
+}
+
+item {
+  id: 4
+  name: 'Speed boat'
+}
+
+item {
+  id: 5
+  name: 'Boat'
+}
+
+item {
+  id: 6
+  name: 'Kayak'
+}
+
+item {
+  id: 7
+  name: 'Sail boat'
+}
+
+item {
+  id: 8
+  name: 'Swimming person'
+}
+
+item {
+  id: 9
+  name: 'Flying bird/plane'
+}
+
+item {
+  id: 10
+  name: 'Other'
+}
